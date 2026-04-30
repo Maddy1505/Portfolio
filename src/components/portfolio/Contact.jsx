@@ -22,11 +22,29 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      toast.success("Message sent! I'll get back to you within 24 hours.");
-      e.target.reset();
-    }, 1200);
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwu8aoHbpHj-NY1cKqyS339i7U4iIm_qknMTcYyGEYFdOtWYN3cpy8aSqQ2RSQiMpf-/exec";
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    fetch(scriptURL, { 
+      method: "POST", 
+      body: JSON.stringify(data), 
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      }
+    })
+      .then((response) => {
+        setSending(false);
+        toast.success("Message sent successfully!");
+        e.target.reset();
+      })
+      .catch((error) => {
+        setSending(false);
+        toast.error("Something went wrong. Please try again later.");
+        console.error("Error!", error.message);
+      });
   };
 
   return (
@@ -108,6 +126,7 @@ const Contact = () => {
                 <input
                   required
                   type="text"
+                  name="name"
                   placeholder="Jane Doe"
                   className="w-full rounded-xl bg-input/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 />
@@ -117,6 +136,7 @@ const Contact = () => {
                 <input
                   required
                   type="email"
+                  name="email"
                   placeholder="jane@company.com"
                   className="w-full rounded-xl bg-input/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 />
@@ -126,6 +146,7 @@ const Contact = () => {
               <label className="text-xs font-mono text-muted-foreground">SUBJECT</label>
               <input
                 type="text"
+                name="subject"
                 placeholder="Let's work together"
                 className="w-full rounded-xl bg-input/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
               />
@@ -135,6 +156,7 @@ const Contact = () => {
               <textarea
                 required
                 rows={5}
+                name="message"
                 placeholder="Tell me about your project..."
                 className="w-full rounded-xl bg-input/50 border border-border px-4 py-3 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
               />
