@@ -6,7 +6,7 @@ import { toast } from "sonner";
 const contactInfo = [
   { icon: Mail, label: "Email", value: "meganathanmm197@gmail.com" },
   { icon: Phone, label: "Phone", value: "+91 75300 26010" },
-  { icon: MapPin, label: "Location", value: "Coimbatore, India" },
+  { icon: MapPin, label: "Location", value: "Coimbatore, Tamil Nadu, India" },
 ];
 
 const socials = [
