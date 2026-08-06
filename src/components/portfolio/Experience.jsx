@@ -4,8 +4,8 @@ import { Briefcase, GraduationCap } from "lucide-react";
 const timeline = [
   {
     type: "work",
-    year: "2026 — Present",
-    title: "Flutter Developer",
+    year: "2026",
+    title: "Flutter Developer Intern",
     org: "Younderbots Company",
     description: "Developing cross-platform mobile applications using Flutter and Firebase, ensuring high performance and seamless user experience.",
   },

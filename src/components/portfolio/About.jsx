@@ -33,10 +33,10 @@ const About = () => {
           </div>
           <div className="absolute -bottom-6 -right-6 glass-card rounded-2xl p-5 max-w-[220px] shadow-elegant">
             <div className="flex items-center gap-2 text-xs font-mono text-accent mb-1">
-              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-              currently
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              completed
             </div>
-            <div className="font-display font-semibold">Flutter Developer at Younderbots Company</div>
+            <div className="font-display font-semibold">Internship at Younderbots Company</div>
           </div>
           <div className="absolute -top-4 -left-4 h-20 w-20 rounded-full bg-gradient-primary blur-2xl opacity-60" />
         </motion.div>
